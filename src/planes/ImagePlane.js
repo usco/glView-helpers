@@ -1,3 +1,4 @@
+import THREE from 'three';
 
 class ImagePlane extends THREE.Object3D{
   constructor (width, length, imgUrl, resolution, upVector) {

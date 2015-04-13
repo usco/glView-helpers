@@ -1,3 +1,5 @@
+import THREE from 'three';
+
 /**
  * @author Slayvin / http://slayvin.net
  */

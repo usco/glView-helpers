@@ -1,3 +1,5 @@
+import THREE from 'three';
+
 class ShadowPlane extends THREE.Object3D{
 
   constructor(width, length, shadowColor, upVector) {

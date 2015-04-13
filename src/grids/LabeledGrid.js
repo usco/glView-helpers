@@ -1,3 +1,5 @@
+import THREE from 'three';
+
 /*TODO:
  - refactor
  - use label helper
@@ -26,7 +28,7 @@ class LabeledGrid extends THREE.Object3D{
       this.text         = text || true;
       this.textColor    = textColor || "#000000";
       this.textPosition = "center";
-      this.upVector     = upVector || new THREE.Vector3(0,1,0);
+      this.upVector     = new THREE.Vector3().fromArray(upVector) || new THREE.Vector3(0,1,0);
       
       this.name = "grid";
       

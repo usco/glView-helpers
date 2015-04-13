@@ -1,3 +1,4 @@
+import THREE from 'three';
 import { THREE_Mirror } from "./Mirror"
 
 class MirrorPlane extends THREE.Object3D{

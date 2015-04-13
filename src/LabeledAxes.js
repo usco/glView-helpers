@@ -1,4 +1,5 @@
-import { ArrowHelper } from './ArrowHelper'
+import THREE from 'three';
+import ArrowHelper from './ArrowHelper'
       
 class LabeledAxes extends THREE.Object3D{
 
@@ -144,7 +145,7 @@ class LabeledAxes extends THREE.Object3D{
   }
 }
 
-module.exports = LabeledAxes;
+//module.exports = LabeledAxes;
 //weird issues with export: apparently browserify sets a "is_es_Module" flag
-//export { LabeledAxes };
+export default LabeledAxes ;
       

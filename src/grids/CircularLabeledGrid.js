@@ -1,3 +1,4 @@
+import THREE from 'three';
 
 //TODO refactor HEAVILLY
 

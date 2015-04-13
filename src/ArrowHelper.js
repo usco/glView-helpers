@@ -1,3 +1,5 @@
+import THREE from 'three';
+
 class ArrowHelper extends THREE.Object3D{
 
   constructor(direction, origin, length, color, headLength, headRadius, headColor) {
@@ -29,4 +31,4 @@ class ArrowHelper extends THREE.Object3D{
 	 }
 }
 
-export { ArrowHelper };
+export default ArrowHelper ;

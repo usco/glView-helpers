@@ -1,4 +1,6 @@
-GizmoMaterial = function ( parameters ) {
+import THREE from 'three';
+
+let GizmoMaterial = function ( parameters ) {
 		THREE.MeshBasicMaterial.call( this );
 		//this.depthTest = false;
 		//this.depthWrite = false;
