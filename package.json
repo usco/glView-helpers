@@ -1,21 +1,18 @@
 {
-  "name": "three-js-helpers",
+  "name": "glView-helpers",
   "version": "0.0.2",
-  "description": "three-js-helpers ============================",
+  "description": "glView-helpers ============================",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/usco/three-js-helpers.git"
+    "url": "git://github.com/usco/glView-helpers.git"
   },
   "author": "Mark 'kaosat-dev' Moissette",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/usco/three-js-helpers/issues"
+    "url": "https://github.com/usco/glView-helpers/issues"
   },
-  "homepage": "https://github.com/usco/three-js-helpers",
+  "homepage": "https://github.com/usco/glView-helpers",
   "devDependencies": {
     "babelify": "^5.0.3",
     "babel": "^4.6.5"
