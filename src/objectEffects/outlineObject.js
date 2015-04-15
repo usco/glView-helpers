@@ -1,3 +1,5 @@
+import THREE from 'three'
+
 var OutlineObject = function( options ) {
   var options = options || {};
   this.outlineColor = options.color || "#FF0000";
@@ -41,3 +43,6 @@ OutlineObject.prototype.addTo = function( object , options){
   object.remove(object._outline);
   delete object._outline;
  }
+
+
+export default OutlineObject

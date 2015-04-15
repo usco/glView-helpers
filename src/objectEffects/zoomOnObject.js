@@ -1,3 +1,7 @@
+import THREE from 'three'
+import TWEEN from 'tween.js'
+
+//var TWEEN = require('.tween.js');
 
 var ZoomInOnObject = function( options ) {
   var options = options || {};
@@ -92,6 +96,8 @@ ZoomInOnObject.prototype.undo = function()
     } )
     .start();
 }
+
+export default ZoomInOnObject;
 
 
 //export ZoomInOnObject;
