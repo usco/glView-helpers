@@ -1,5 +1,6 @@
-var BaseHelper = require("./BaseHelper");
-var {GizmoMaterial,GizmoLineMaterial} = require("./GizmoMaterial");
+import THREE from 'three'
+import BaseHelper from "./BaseHelper"
+import {GizmoMaterial,GizmoLineMaterial} from "./GizmoMaterial"
 
 /*
  id: inner diameter : blank space at center of cross
@@ -43,4 +44,4 @@ var CrossHelper = function(options)
 CrossHelper.prototype = Object.create( BaseHelper.prototype );
 CrossHelper.prototype.constructor = CrossHelper;  
 
-module.exports = CrossHelper;
+export default CrossHelper

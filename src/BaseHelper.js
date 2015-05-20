@@ -1,3 +1,4 @@
+import THREE from 'three';
 
 
 /*
@@ -75,5 +76,5 @@ class BaseHelper extends THREE.Object3D {
   }
 }
 
-module.exports = BaseHelper;
+export default BaseHelper
 

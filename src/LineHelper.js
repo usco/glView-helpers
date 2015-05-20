@@ -1,5 +1,6 @@
-var BaseHelper = require("./BaseHelper");
-var {GizmoMaterial,GizmoLineMaterial} = require("./GizmoMaterial");
+import THREE from 'three'
+import BaseHelper from "./BaseHelper"
+import {GizmoMaterial,GizmoLineMaterial} from "./GizmoMaterial"
 
 
 //TODO:should inherit from THREE.MESH, but some weird stuff going on

@@ -1,8 +1,9 @@
-var BaseHelper = require("../BaseHelper");
-var LineHelper = require("../LineHelper");
-var CrossHelper= require("../CrossHelper");
-var {LabelHelperPlane, LabelHelper3d} = require("../LabelHelper");
-var {GizmoMaterial,GizmoLineMaterial} = require("../GizmoMaterial");
+import THREE from 'three'
+import BaseHelper from "../BaseHelper"
+import LineHelper from "../LineHelper"
+import CrossHelper from "../CrossHelper"
+import {LabelHelperPlane, LabelHelper3d} from "../LabelHelper"
+import {GizmoMaterial,GizmoLineMaterial} from "../GizmoMaterial"
 /*
   Made of two main arrows, and two lines perpendicular to the main arrow, at both its ends
   If the VISUAL distance between start & end of the helper is too short to fit text + arrow:
@@ -648,5 +649,5 @@ class SizeHelper extends BaseHelper {
   
 }
 
-module.exports = SizeHelper;
+export default SizeHelper
 

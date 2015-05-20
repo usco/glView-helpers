@@ -1,4 +1,5 @@
-var BaseHelper = require("../BaseHelper");
+import THREE from 'three'
+import BaseHelper from "../BaseHelper"
 
 /*
 Base helper for all annotations
@@ -86,12 +87,9 @@ class AnnotationHelper extends BaseHelper {
     console.log("putSide",putSide);
     putSide = new THREE.Vector3().fromArray( putSide );
     return putSide; 
-  }  
-
-  
+  }   
 }
 
-
-module.exports = AnnotationHelper;
+export default AnnotationHelper
 
 

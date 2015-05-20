@@ -1,4 +1,7 @@
-var BaseHelper = require("./BaseHelper");
+import THREE from 'three'
+import BaseHelper from "./BaseHelper"
+import {GizmoMaterial} from "./GizmoMaterial"
+
 
 class LabelHelper extends BaseHelper {
   constructor( options ) {
@@ -251,4 +254,5 @@ class LabelHelperPlane extends LabelHelper {
    }
 }
 
+//export {}
 module.exports = {LabelHelperPlane:LabelHelperPlane,LabelHelper3d:LabelHelper3d}; 

@@ -1,6 +1,7 @@
-var AnnotationHelper = require("./AnnotationHelper");
-var SizeHelper = require("../dimensions/SizeHelper");
-var CrossHelper = require("../CrossHelper");
+import THREE from 'three'
+import AnnotationHelper from "./AnnotationHelper"
+import SizeHelper from "../dimensions/SizeHelper"
+import CrossHelper from "../CrossHelper"
 
 class DistanceHelper extends AnnotationHelper {
   constructor( options ) {

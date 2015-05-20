@@ -64,5 +64,4 @@ var GizmoLineMaterial = function ( parameters ) {
 
 GizmoLineMaterial.prototype = Object.create( THREE.LineBasicMaterial.prototype );
 
-
-module.exports = {GizmoMaterial:GizmoMaterial, GizmoLineMaterial:GizmoLineMaterial};
+export {GizmoMaterial,GizmoLineMaterial}

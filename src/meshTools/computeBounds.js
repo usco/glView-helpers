@@ -1,7 +1,7 @@
 import THREE from 'three'
 
 
-export let computeBoundingBox = function(object, force)
+export function computeBoundingBox(object, force)
 {
   var force = force === undefined ? false: force;
   
@@ -39,14 +39,14 @@ export let computeBoundingBox = function(object, force)
   return bbox
 }
 
-let computeBoundingSphere_old = function(object, force)
+function computeBoundingSphere_old(object, force)
 {
   object.boundingSphere = computeObject3DBoundingBox(object, force).getBoundingSphere();
   return object.boundingSphere;
 }
 
 
-export let computeBoundingSphere = function(object, force)
+export function computeBoundingSphere(object, force)
 {
   var bbox = new THREE.Box3().setFromObject( object );
   
