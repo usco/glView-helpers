@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/usco/glView-helpers",
   "devDependencies": {
-    "babelify": "^5.0.3",
-    "babel": "^4.6.5"
+    "babel": "^5.4.3",
+    "babelify": "^5.0.3"
   }
 }
