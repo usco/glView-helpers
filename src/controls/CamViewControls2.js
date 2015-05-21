@@ -1,5 +1,5 @@
 import THREE from 'three'
-import { GizmoMaterial, GizmoLineMaterial } from "../GizmoMaterial";
+import { GizmoMaterial, GizmoLineMaterial } from "../GizmoMaterial"
 import LabeledAxes from "../LabeledAxes"
 
 //FIXME: hack 
@@ -568,8 +568,6 @@ class CamViewControls extends THREE.Object3D{
   }
 
   dispatchEvent( event ) {
-
-    console.log("here")
       if ( this._listeners === undefined ) return;
 
       var listeners = this._listeners;

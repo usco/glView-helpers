@@ -51,7 +51,7 @@ class AnnotationHelper extends BaseHelper {
     //this.name = "";
     
     //can this object be translated/rotated/scaled on its own ? NOPE
-    this.transformable = false;
+    this.transformable = false
   }
   
   /*
