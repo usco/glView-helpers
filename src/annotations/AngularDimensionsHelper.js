@@ -1,4 +1,5 @@
-var AnnotationHelper = require("./AnnotationHelper");
+import THREE from 'three'
+import AnnotationHelper from "./AnnotationHelper"
 
 var AngularDimHelper = function(options)
 {
@@ -390,4 +391,4 @@ AngularDimHelper.prototype._setName = function( ){
   this.name = "Angle: " + tmpValue;
 }
   
-module.exports = AngularDimHelper;
+export default AngularDimHelper

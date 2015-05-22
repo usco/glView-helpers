@@ -1,11 +1,11 @@
 require("babel/polyfill");
 
 exports.AnnotationHelper = require("./AnnotationHelper.js" );
-exports.DistanceHelper   = require("./DistanceHelper.js" );
+exports.DistanceVisual   = require("./DistanceHelper.js" );
 exports.NoteHelper       = require("./NoteHelper.js" );
-exports.DiameterHelper   = require("./DiameterHelper.js" );
-exports.AngDimHelper     = require("./AngularDimensionsHelper.js" );
-exports.ThicknessHelper  = require("./ThicknessHelper.js" );
+exports.DiameterVisual   = require("./DiameterHelper.js" );
+exports.AngleVisual     = require("./AngularDimensionsHelper.js" );
+exports.ThicknessVisual  = require("./ThicknessHelper.js" );
 
 //FIXME: temporary hack
 /*window.AnnotationHelper   = exports.AnnotationHelper;

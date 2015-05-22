@@ -1,7 +1,9 @@
-var BaseHelper = require("../BaseHelper");
-var CrossHelper = require("../CrossHelper");
-var {LabelHelperPlane, LabelHelper3d} = require("../LabelHelper");
-var {GizmoMaterial,GizmoLineMaterial} = require("../GizmoMaterial");
+import THREE from 'three'
+import BaseHelper from '../BaseHelper'
+import CrossHelper from "../CrossHelper"
+
+import {LabelHelperPlane, LabelHelper3d} from "../LabelHelper"
+import {GizmoMaterial,GizmoLineMaterial} from "../GizmoMaterial"
 
 /*
   Visual helper representing leader lines

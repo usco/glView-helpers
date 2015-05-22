@@ -1,5 +1,6 @@
-var BaseHelper = require("./BaseHelper");
-var {GizmoMaterial,GizmoLineMaterial} = require("./GizmoMaterial");
+import THREE from 'three'
+import BaseHelper from "./BaseHelper"
+import {GizmoMaterial,GizmoLineMaterial} from "./GizmoMaterial"
 
 /*
 //TODO: make this into a mesh / geometry subclass
@@ -40,4 +41,4 @@ CircleHelper.prototype.setRadius = function( radius ){
   this.add( this.rCircle );
 }  
 
-module.exports = CircleHelper;
+export default CircleHelper
