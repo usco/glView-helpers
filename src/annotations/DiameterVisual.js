@@ -18,7 +18,7 @@ import {GizmoMaterial,GizmoLineMaterial} from "../GizmoMaterial"
     - place center
     - place diameter
 */
-class DiameterHelper extends AnnotationHelper {
+class DiameterVisual extends AnnotationHelper {
   constructor( options ) {
     const DEFAULTS = {
       diameter: 10,
@@ -335,4 +335,4 @@ class DiameterHelper extends AnnotationHelper {
   }
 }
   
-export default DiameterHelper
+export default DiameterVisual

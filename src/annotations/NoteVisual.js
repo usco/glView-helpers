@@ -6,7 +6,7 @@ import CrossHelper from "../CrossHelper"
 /*
   Helper for basic notes (single point)
 */
-class NoteHelper extends AnnotationHelper {
+class NoteVisual extends AnnotationHelper {
   constructor( options ) {
     const DEFAULTS = {
       crossColor:"#000",
@@ -19,6 +19,10 @@ class NoteHelper extends AnnotationHelper {
     this.pointCross = new CrossHelper({size:4.5,color:this.crossColor})
     this.pointCross.hide()
     this.add( this.pointCross )
+
+    this.pointCube = new THREE.Mesh(new THREE.SphereGeometry(1,20,20), new THREE.MeshBasicMaterial({color:0xFF00FF}))
+    //this.pointCube.hide()
+    this.add( this.pointCube )
     
     
     this.point      = options.point!== undefined ? options.point : undefined
@@ -40,9 +44,11 @@ class NoteHelper extends AnnotationHelper {
     //point location cross
     this.pointCross.position.copy( this.point )
     this.pointCross.show()
+
+    this.pointCube.position.copy( this.point )
   }
   
 }
 
-export default NoteHelper
+export default NoteVisual
 

@@ -1,7 +1,7 @@
 import THREE from 'three'
 import AnnotationHelper from "./AnnotationHelper"
 
-var AngularDimHelper = function(options)
+var AngleVisual = function(options)
 {
   AnnotationHelper.call( this );
   var options = options || {};
@@ -100,11 +100,11 @@ var AngularDimHelper = function(options)
   this._setName();
 }
 
-AngularDimHelper.prototype = Object.create( AnnotationHelper.prototype );
-AngularDimHelper.prototype.constructor = AngularDimHelper;
+AngleVisual.prototype = Object.create( AnnotationHelper.prototype );
+AngleVisual.prototype.constructor = AngleVisual;
 
 
-AngularDimHelper.prototype.setStart = function( start, object ){
+AngleVisual.prototype.setStart = function( start, object ){
   this.start = start;
   this.startObject = object;
   
@@ -114,7 +114,7 @@ AngularDimHelper.prototype.setStart = function( start, object ){
   this.startMidLine.setStart( this.start );
 }
 
-AngularDimHelper.prototype.setMid = function( mid, object ){
+AngleVisual.prototype.setMid = function( mid, object ){
   this.mid = mid;
   this.midObject = object;
   
@@ -127,7 +127,7 @@ AngularDimHelper.prototype.setMid = function( mid, object ){
   this.midEndLine.setStart( this.mid );
 }
 
-AngularDimHelper.prototype.setEnd = function( end, object ){
+AngleVisual.prototype.setEnd = function( end, object ){
   this.end = end;
   this.endObject = object;
   
@@ -227,14 +227,14 @@ AngularDimHelper.prototype.setEnd = function( end, object ){
 	}
 }
 
-AngularDimHelper.prototype.computeAngle = function(start, mid, end){
+AngleVisual.prototype.computeAngle = function(start, mid, end){
   var v1 = start.clone().sub( mid );
   var v2 = end.clone().sub( mid );
   var angle = v1.angleTo( v2 );
   return angle;
 }
 
-AngularDimHelper.prototype.set = function(){
+AngleVisual.prototype.set = function(){
   var angleStart = 0.3;
   var radius = this.radius;
   var angle  = this.angle;
@@ -351,7 +351,7 @@ AngularDimHelper.prototype.set = function(){
   mainArrowLeft.line.material.depthWrite=false;
 }
 
-AngularDimHelper.prototype.unset = function(){
+AngleVisual.prototype.unset = function(){
 
   this.label.hide();
   this.arc.hide();
@@ -366,7 +366,7 @@ AngularDimHelper.prototype.unset = function(){
   //if( this.debugHelpers ) this.remove( this.debugHelpers );
 }
 
-AngularDimHelper.prototype.setLabelType = function(){
+AngleVisual.prototype.setLabelType = function(){
   
   var degAngle = this.angle*180/Math.PI;
   this.text = new String(degAngle.toFixed(2))+"°";
@@ -385,10 +385,10 @@ AngularDimHelper.prototype.setLabelType = function(){
   //this.label.position.copy( this.mid );
 }
 
-AngularDimHelper.prototype._setName = function( ){
+AngleVisual.prototype._setName = function( ){
   var tmpValue = this.angle; //TODO: store angles in radians or degrees?
   if( tmpValue ) tmpValue = (tmpValue*180/Math.PI).toFixed( 2 );
   this.name = "Angle: " + tmpValue;
 }
   
-export default AngularDimHelper
+export default AngleVisual

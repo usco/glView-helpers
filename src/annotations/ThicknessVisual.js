@@ -61,7 +61,7 @@ export function getEntryExitThickness(entryInteresect, normalType="face"){
 
 
 
-class ThicknessHelper extends AnnotationHelper {
+class ThicknessVisual extends AnnotationHelper {
   constructor( options ) {
     const DEFAULTS = {
         normalType:  "face",//can be, face, x,y,z
@@ -102,17 +102,17 @@ class ThicknessHelper extends AnnotationHelper {
       console.error(error)
     }
     
-    this.thicknessHelperArrows.setFromParams( {
+    this.ThicknessVisualArrows.setFromParams( {
       start:entryPoint,
       end:exitPoint,
       facingSide:putSide,
     })
-    this.thicknessHelperArrows.show()
+    this.ThicknessVisualArrows.show()
   }
    
    /*configure all the basic visuals of this helper*/
   _setupVisuals(){
-    this.thicknessHelperArrows = new SizeHelper({
+    this.ThicknessVisualArrows = new SizeHelper({
       textColor:this.textColor, 
       textBgColor:this.textBgColor, 
       fontSize:this.fontSize,
@@ -122,8 +122,8 @@ class ThicknessHelper extends AnnotationHelper {
       arrowColor: this.arrowColor,
       sideLength:this.sideLength
     })
-    this.thicknessHelperArrows.hide()
-    this.add( this.thicknessHelperArrows )
+    this.ThicknessVisualArrows.hide()
+    this.add( this.ThicknessVisualArrows )
   
     //debug helpers
     this.faceNormalHelper  = new THREE.ArrowHelper( new THREE.Vector3(), new THREE.Vector3(), 15, 0XFF0000 )
@@ -185,12 +185,12 @@ class ThicknessHelper extends AnnotationHelper {
     }catch(error){
       console.error(error)
     }
-    this.thicknessHelperArrows.setFromParams( {
+    this.ThicknessVisualArrows.setFromParams( {
       start:entryPoint,
       end:exitPoint,
       facingSide:putSide,
     })
-    this.thicknessHelperArrows.show()
+    this.ThicknessVisualArrows.show()
   }
 
   unset(){
@@ -198,8 +198,8 @@ class ThicknessHelper extends AnnotationHelper {
     this.position.set(0, 0, 0)
     let options = Object.assign({}, this.DEFAULTS, options) 
     Object.assign(this, options)//unsure
-    this.thicknessHelperArrows.hide()
+    this.ThicknessVisualArrows.hide()
   }
 }
 
-module.exports = ThicknessHelper
+module.exports = ThicknessVisual
