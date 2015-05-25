@@ -113,6 +113,7 @@ class ThicknessVisual extends AnnotationHelper {
    /*configure all the basic visuals of this helper*/
   _setupVisuals(){
     this.ThicknessVisualArrows = new SizeHelper({
+      lineWidth:this.lineWidth,
       textColor:this.textColor, 
       textBgColor:this.textBgColor, 
       fontSize:this.fontSize,

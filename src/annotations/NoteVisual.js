@@ -24,7 +24,6 @@ class NoteVisual extends AnnotationHelper {
     //this.pointCube.hide()
     this.add( this.pointCube )
     
-    
     this.point      = options.point!== undefined ? options.point : undefined
     this.object     = options.object!== undefined ? options.object : undefined
     

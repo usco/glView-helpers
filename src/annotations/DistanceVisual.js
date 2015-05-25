@@ -3,6 +3,7 @@ import AnnotationHelper from "./AnnotationHelper"
 import SizeHelper from "../dimensions/SizeHelper"
 import CrossHelper from "../CrossHelper"
 
+import {getTargetBoundsData} from "./utils"
 
 class DistanceVisual extends AnnotationHelper {
   constructor( options ) {
@@ -27,43 +28,21 @@ class DistanceVisual extends AnnotationHelper {
     this._setupVisuals()
     this._computeBasics()
    
-    this.updatable = false
     this.setAsSelectionRoot( true )
+  }
 
-  }
-  
-  _computeBasics(){
-    var start          = this.start
-    var end            = this.end
-    var startObject    = this.startObject
-    var endObject      = this.endObject
-    
-    if( ! start || ! end || ! startObject || ! endObject ) return
-    
-    var endToStart = end.clone().sub( start )
-    this.distance = endToStart.length()
-    
-    try{
-      var midPoint = endToStart.divideScalar( 2 ).add( start )
-      this._putSide = this.getTargetBoundsData(startObject, midPoint)
-    }catch(error){
-      console.error(error)
-    }
-    
-    //all done, now update the visuals
-    this._updateVisuals()
-    
-    this.sizeArrow.show()
-    this.startCross.show()
-  }
-  
-  /*configure all the basic visuals of this helper*/
+    /*configure all the basic visuals of this helper*/
   _setupVisuals(){
     this.startCross = new CrossHelper({size:this.crossSize,color:this.crossColor})
     this.startCross.hide()
     this.add( this.startCross )
+
+    this.endCross = new CrossHelper({size:this.crossSize,color:this.crossColor})
+    this.endCross.hide()
+    this.add( this.endCross )
       
     this.sizeArrow = new SizeHelper( { 
+      lineWidth:this.lineWidth,
       textColor:this.textColor, 
       textBgColor:this.textBgColor, 
       fontSize:this.fontSize,
@@ -78,14 +57,44 @@ class DistanceVisual extends AnnotationHelper {
     this.add( this.sizeArrow )
   }
   
+  _computeBasics(){
+    let start          = this.start
+    let end            = this.end
+    let startObject    = this.startObject
+    let endObject      = this.endObject
+    
+    if( ! start || ! end || ! startObject || ! endObject ) return
+    
+    let endToStart = end.clone().sub( start )
+    this.distance = endToStart.length()
+    
+    try{
+      let midPoint = endToStart.divideScalar( 2 ).add( start )
+      this._putSide = getTargetBoundsData(startObject, midPoint)
+    }catch(error){
+      console.error(error)
+    }
+    
+    //all done, now update the visuals
+    this._updateVisuals()
+  }
+    
   _updateVisuals(){
+    console.log("this._putSide",this._putSide)
     this.sizeArrow.setFromParams( {
       start:this.start,
       end:this.end,
-      facingSide:this._putSide,
+      debug:true
+      //facingSide:new THREE.Vector3(0,0,1)
+      //facingSide:this._putSide,
     })
+
+    this.sizeArrow.show()
+    this.startCross.show()
+    this.endCross.show()
     
     this.startCross.position.copy( this.start )
+    this.endCross.position.copy( this.end )
   }
   
   /*start: vector3D
@@ -96,18 +105,8 @@ class DistanceVisual extends AnnotationHelper {
     if(!start) return
     this.start = start
     if( object) this.startObject = object
-    var object = this.startObject
+    let object = this.startObject
     //console.log("setting start",start, object, object.worldToLocal(start.clone()) )
-    
-    //FIXME: experimental
-    this.curStartObjectPos = object.position.clone()
-    
-    this._startOffset = start.clone().sub( this.curStartObjectPos )
-    if(!this._startHook){
-      this._startHook = new THREE.Object3D()
-      this._startHook.position.copy( this.start.clone().sub( object.position ) )//object.worldToLocal(this.start) )
-      object.add( this._startHook )
-    }
     
     this.startCross.position.copy( this.start )
     this.sizeArrow.setStart( this.start )
@@ -119,20 +118,12 @@ class DistanceVisual extends AnnotationHelper {
     this.end = end
     if( object) this.endObject = object
     
-    var object = this.endObject
-    
-    //FIXME: experimental
-    this.curEndObjectPos = object.position.clone()
-
-    this._endOffset = end.clone().sub( this.curEndObjectPos )
-    
-    if(!this._endHook){
-      this._endHook = new THREE.Object3D()
-      this._endHook.position.copy( this.end.clone().sub( object.position ) )//object.worldToLocal(this.end) )
-      object.add( this._endHook )
-    }
-    
+    let object = this.endObject
+     
     this.distance = end.clone().sub(this.start).length()
+
+    this.endCross.position.copy( this.end )
+    this.endCross.show()
     
     this.sizeArrow.setEnd( this.end)
     this.sizeArrow.show()
@@ -148,6 +139,8 @@ class DistanceVisual extends AnnotationHelper {
   }
 
 }
+
+
 
 class DistanceVisual__ extends AnnotationHelper {
   constructor( options ) {
@@ -185,7 +178,7 @@ class DistanceVisual__ extends AnnotationHelper {
   }
   set start (val) {
     console.log("setting start",val)
-    var start = this._start = val
+    let start = this._start = val
     this._computeStartHooks()
     
     if(!this.startCross ) return
@@ -198,7 +191,7 @@ class DistanceVisual__ extends AnnotationHelper {
   }
   set startObject (val) {
     console.log("setting start object",val)
-    var startObject = this._startObject = val
+    let startObject = this._startObject = val
     this._computeStartHooks()
   }
   
@@ -207,7 +200,7 @@ class DistanceVisual__ extends AnnotationHelper {
   }
   set end(val) {
     console.log("setting end",val)
-    var start = this._end = val
+    let start = this._end = val
     this._computeEndHooks()
   }
   
@@ -216,7 +209,7 @@ class DistanceVisual__ extends AnnotationHelper {
   }
   set endObject (val) {
     console.log("setting end object",val)
-    var endObject = this._endObject = val
+    let endObject = this._endObject = val
     this._computeEndHooks()
   }
 
@@ -251,18 +244,18 @@ class DistanceVisual__ extends AnnotationHelper {
   }*/
   
   _computeBasics(){
-    var start          = this.start
-    var end            = this.end
-    var startObject    = this.startObject
-    var endObject      = this.endObject
+    let start          = this.start
+    let end            = this.end
+    let startObject    = this.startObject
+    let endObject      = this.endObject
     
     if( ! start || ! end || ! startObject || ! endObject ) return
     
-    var endToStart = end.clone().sub( start )
+    let endToStart = end.clone().sub( start )
     this.distance = endToStart.length()
     
     try{
-      var midPoint = endToStart.divideScalar( 2 ).add( start )
+      let midPoint = endToStart.divideScalar( 2 ).add( start )
       this._putSide = this.getTargetBoundsData(startObject, midPoint)
     }catch(error){
       console.error(error)
@@ -314,7 +307,7 @@ class DistanceVisual__ extends AnnotationHelper {
     if(!start) return
     this.start = start
     if( object) this.startObject = object
-    var object = this.startObject
+    let object = this.startObject
     //console.log("setting start",start, object, object.worldToLocal(start.clone()) )
     
     //FIXME: experimental
@@ -337,7 +330,7 @@ class DistanceVisual__ extends AnnotationHelper {
     this.end = end
     if( object) this.endObject = object
     
-    var object = this.endObject
+    let object = this.endObject
     
     //FIXME: experimental
     this.curEndObjectPos = object.position.clone()
@@ -366,14 +359,20 @@ class DistanceVisual__ extends AnnotationHelper {
   }
 
 
+  
+}
+
+export default DistanceVisual
+
+
   /*brute force update method, to update the star & end positions
-  when the objects they are attached to change (position, rotation,scale)*/
+  when the objects they are attached to change (position, rotation,scale)
   update( ){
     return
     //TODO: find a way to only call this when needed
     if(!this.visible) return
     if(!this.updatable) return
-    var changed = false
+    let changed = false
     
     this.startObject.updateMatrix()
     this.startObject.updateMatrixWorld()
@@ -384,16 +383,4 @@ class DistanceVisual__ extends AnnotationHelper {
     this.setEnd( this.endObject.localToWorld( this._endHook.position.clone()) )
     
     this._setName()
-  }
-
-  _setName( ){
-    var tmpValue = this.distance
-    if( tmpValue ) tmpValue = tmpValue.toFixed( 2 )
-    this.name = "Distance: " + tmpValue
-  }
-  
-}
-
-module.exports = DistanceVisual
-
-
+  }*/
