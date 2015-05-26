@@ -24,6 +24,7 @@ class DiameterVisual extends AnnotationHelper {
       diameter: 10,
       _position:new THREE.Vector3(),
       orientation: new THREE.Vector3(),
+      textColor: "#ff0077",
       centerColor:"#F00",
       crossColor:"#F00",
     }
@@ -34,16 +35,17 @@ class DiameterVisual extends AnnotationHelper {
     this.text   = options.text !== undefined ? options.text : this.diameter.toFixed(2)
 
     //FIXME: hack
-    this.textColor = "#ff0077"
+    /*this.textColor = "#ff0077"
     this.arrowColor = this.textColor
     this.centerColor = this.textColor
     this.crossColor  = this.textColor
-    this.textBgColor = "rgba(255, 255, 255, 0)"
+    this.textBgColor = "rgba(255, 255, 255, 0)"*/
     
     //FIXME: this needs to be in all of the numerical measurement or not ? 
     this.tolerance = options.tolerance !== undefined ? options.tolerance : 0
     
-    this.lineMaterial = new GizmoLineMaterial( { color: this.centerColor,
+    this.lineMaterial = new GizmoLineMaterial( { 
+      color: this.lineColor,
       lineWidth: this.lineWidth,
       polygonOffset : true,
       polygonOffsetFactor : -0.5,
@@ -98,8 +100,12 @@ class DiameterVisual extends AnnotationHelper {
     this.centerCross = new CrossHelper({size:this.centerCrossSize,color:this.centerColor})
     this.centerCross.hide()
     this.add( this.centerCross )
-    
-    /*//pointA cross
+        
+    this.diaCircle = new CircleHelper({material : this.lineMaterial})
+    this.diaCircle.hide()
+    this.add( this.diaCircle )
+
+     /*//pointA cross
     this.pointACross = new CrossHelper({size:this.centerCrossSize,color:this.crossColor})
     this.pointACross.hide()
     this.add( this.pointACross )
@@ -113,10 +119,6 @@ class DiameterVisual extends AnnotationHelper {
     this.pointCCross = new CrossHelper({size:this.centerCrossSize,color:this.crossColor})
     this.pointCCross.hide()
     this.add( this.pointCCross )*/
-    
-    this.diaCircle = new CircleHelper({material : this.lineMaterial})
-    this.diaCircle.hide()
-    this.add( this.diaCircle )
 
     /*this.sizeArrow = new SizeHelper({
     fontSize: this.fontSize,
@@ -143,7 +145,8 @@ class DiameterVisual extends AnnotationHelper {
       textBgColor:this.textBgColor,
       labelType : this.labelType,
       arrowColor:this.textColor,
-      linesColor:this.textColor
+      linesColor:this.lineColor,
+      lineWidth:this.lineWidth
       })
 
     this.leaderLine.hide()
