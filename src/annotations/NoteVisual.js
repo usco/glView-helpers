@@ -1,12 +1,12 @@
 import THREE from 'three'
-import AnnotationHelper from "./AnnotationHelper"
+import AnnotationVisual from "./AnnotationVisual"
 import CrossHelper from "../CrossHelper"
 
 
 /*
   Helper for basic notes (single point)
 */
-class NoteVisual extends AnnotationHelper {
+class NoteVisual extends AnnotationVisual {
   constructor( options ) {
     const DEFAULTS = {
       crossColor:"#000",
@@ -16,13 +16,7 @@ class NoteVisual extends AnnotationHelper {
     super(options)
 
     //initialise internal sub objects
-    this.pointCross = new CrossHelper({size:4.5,color:this.crossColor})
-    this.pointCross.hide()
-    this.add( this.pointCross )
-
-    this.pointCube = new THREE.Mesh(new THREE.SphereGeometry(1,20,20), new THREE.MeshBasicMaterial({color:0xFF00FF}))
-    //this.pointCube.hide()
-    this.add( this.pointCube )
+    this._setupVisuals()
     
     this.point      = options.point!== undefined ? options.point : undefined
     this.object     = options.object!== undefined ? options.object : undefined
@@ -32,6 +26,22 @@ class NoteVisual extends AnnotationHelper {
     this.setAsSelectionRoot( true )
   }
   
+  _setupVisuals(){
+    console.log("highlightColor",this.highlightColor,this.crossColor)
+    this.pointCross = new CrossHelper({
+      size:4.5,
+      lineWidth:this.lineWidth,
+      color:this.crossColor,
+      highlightColor:this.highlightColor
+    })
+    this.pointCross.hide()
+    this.add( this.pointCross )
+
+    this.pointCube = new THREE.Mesh(new THREE.SphereGeometry(1,20,20), new THREE.MeshBasicMaterial({color:0xFF00FF}))
+    //this.pointCube.hide()
+    this.add( this.pointCube )
+  }
+
   unset( ){
     this.pointCross.hide()
   }

@@ -1,9 +1,9 @@
 import THREE from 'three'
-import AnnotationHelper from "./AnnotationHelper"
+import AnnotationVisual from "./AnnotationVisual"
 
 var AngleVisual = function(options)
 {
-  AnnotationHelper.call( this );
+  AnnotationVisual.call( this );
   var options = options || {};
   //Todo : auto adjust arrows : if not enough space, arrows shoud be outside
   this.up = new THREE.Vector3(0,0,1);
@@ -100,7 +100,7 @@ var AngleVisual = function(options)
   this._setName();
 }
 
-AngleVisual.prototype = Object.create( AnnotationHelper.prototype );
+AngleVisual.prototype = Object.create( AnnotationVisual.prototype );
 AngleVisual.prototype.constructor = AngleVisual;
 
 

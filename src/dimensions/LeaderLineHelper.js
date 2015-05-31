@@ -14,6 +14,7 @@ class LeaderLineHelper extends BaseHelper {
       distance: 30,
       color:"#000",
       text:"",
+
     }
     
     let options = Object.assign({}, DEFAULTS, options) 
@@ -26,7 +27,6 @@ class LeaderLineHelper extends BaseHelper {
     
     this.linesColor = options.linesColor !== undefined ? options.linesColor : 0x000000
     this.lineWidth  = options.lineWidth !== undefined ? options.lineWidth : 1
-    console.log("lineWidth",this.lineWidth)
     
     this.fontSize   = options.fontSize!== undefined ? options.fontSize : 8
     this.textColor  = options.textColor!== undefined ? options.textColor : "#000"
@@ -37,6 +37,8 @@ class LeaderLineHelper extends BaseHelper {
     this.angleLength  = options.angleLength !== undefined ? options.angleLength : 5
     this.horizLength  = options.horizLength !== undefined ? options.horizLength : 5
     this.radius = options.radius !== undefined ? options.radius : 0
+
+    this.highlightColor = options.highlightColor !== undefined ? options.highlightColor : "#F00"
     
     let angle       = this.angle
     let radius      = this.radius
@@ -47,7 +49,8 @@ class LeaderLineHelper extends BaseHelper {
     let material = new GizmoLineMaterial( { 
         color: this.linesColor,
         lineWidth:this.lineWidth,
-        linecap:"miter"
+        linecap:"miter",
+        highlightColor:this.highlightColor
     })
     //depthTest:false,depthWrite:false})
    
@@ -77,10 +80,21 @@ class LeaderLineHelper extends BaseHelper {
     switch(this.labelType)
     {
       case "flat":
-        this.label = new LabelHelperPlane({text:this.text,fontSize:this.fontSize,background:(this.textBgColor!=null),color:this.textColor,bgColor:this.textBgColor})
+        this.label = new LabelHelperPlane({
+          text:this.text,
+          fontSize:this.fontSize,
+          background:(this.textBgColor!=null),
+          color:this.textColor,
+          bgColor:this.textBgColor,
+          highlightColor:this.highlightColor
+        })
       break
       case "frontFacing":
-        this.label = new LabelHelper3d({text:this.text,fontSize:this.fontSize,color:this.textColor, bgColor:this.textBgColor})
+        this.label = new LabelHelper3d({
+          text:this.text,
+          fontSize:this.fontSize,
+          color:this.textColor, 
+          bgColor:this.textBgColor})
       break
     }
     this.label.rotation.z = Math.PI
@@ -127,8 +141,12 @@ class LeaderLineHelper extends BaseHelper {
     this.arrowLineMaterial = new GizmoLineMaterial({
         color:this.arrowColor, 
         lineWidth:this.lineWidth,
-        linecap:"miter"})
-    this.arrowConeMaterial = new GizmoMaterial({color:this.arrowColor})
+        linecap:"miter",
+        highlightColor:this.highlightColor})
+    this.arrowConeMaterial = new GizmoMaterial({
+        color:this.arrowColor,
+        highlightColor:this.highlightColor
+    })
     
     this.angleArrow.line.material = this.arrowLineMaterial
     this.angleArrow.cone.material =  this.arrowConeMaterial

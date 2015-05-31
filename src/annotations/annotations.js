@@ -1,6 +1,6 @@
 require("babel/polyfill");
 
-exports.AnnotationHelper = require("./AnnotationHelper.js" );
+exports.AnnotationVisual = require("./AnnotationVisual.js" );
 exports.DistanceVisual   = require("./DistanceVisual.js" );
 exports.NoteVisual       = require("./NoteVisual.js" );
 exports.DiameterVisual   = require("./DiameterVisual.js" );

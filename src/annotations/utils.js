@@ -1,6 +1,7 @@
 import THREE from 'three'
 
 export function getTargetBoundsData( targetObject, point ){
+  console.log("computing bounds")
   /* -1 /+1 directions on all 3 axis to determine for example WHERE an annotation
   should be placed (left/right, front/back, top/bottom)
   */

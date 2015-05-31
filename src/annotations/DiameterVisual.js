@@ -1,5 +1,5 @@
 import THREE from 'three'
-import AnnotationHelper from "./AnnotationHelper"
+import AnnotationVisual from "./AnnotationVisual"
 import CrossHelper from "../CrossHelper"
 import CircleHelper from "../CircleHelper"
 
@@ -18,7 +18,7 @@ import {GizmoMaterial,GizmoLineMaterial} from "../GizmoMaterial"
     - place center
     - place diameter
 */
-class DiameterVisual extends AnnotationHelper {
+class DiameterVisual extends AnnotationVisual {
   constructor( options ) {
     const DEFAULTS = {
       diameter: 10,
@@ -27,6 +27,8 @@ class DiameterVisual extends AnnotationHelper {
       textColor: "#ff0077",
       centerColor:"#F00",
       crossColor:"#F00",
+
+      tolerance:0,//FIXME: this needs to be in all of the numerical measurement or not ? 
     }
     
     let options = Object.assign({}, DEFAULTS, options) 
@@ -40,10 +42,7 @@ class DiameterVisual extends AnnotationHelper {
     this.centerColor = this.textColor
     this.crossColor  = this.textColor
     this.textBgColor = "rgba(255, 255, 255, 0)"*/
-    
-    //FIXME: this needs to be in all of the numerical measurement or not ? 
-    this.tolerance = options.tolerance !== undefined ? options.tolerance : 0
-    
+        
     this.lineMaterial = new GizmoLineMaterial( { 
       color: this.lineColor,
       lineWidth: this.lineWidth,
@@ -51,7 +50,9 @@ class DiameterVisual extends AnnotationHelper {
       polygonOffsetFactor : -0.5,
       side:THREE.FrontSide,
       depthWrite:false,
-      depthTest:false
+      depthTest:false,
+
+      highlightColor:this.highlightColor
     })
     //depthTest:false, depthWrite:false,renderDepth : 1e20
    
@@ -97,11 +98,16 @@ class DiameterVisual extends AnnotationHelper {
   /*configure all the basic visuals of this helper*/
   _setupVisuals(){
     //initialise internal sub objects
-    this.centerCross = new CrossHelper({size:this.centerCrossSize,color:this.centerColor})
+    this.centerCross = new CrossHelper({
+      size:this.centerCrossSize,
+      color:this.centerColor,
+      highlightColor:this.highlightColor})
     this.centerCross.hide()
     this.add( this.centerCross )
         
-    this.diaCircle = new CircleHelper({material : this.lineMaterial})
+    this.diaCircle = new CircleHelper({
+      material : this.lineMaterial,
+      highlightColor:this.highlightColor})
     this.diaCircle.hide()
     this.add( this.diaCircle )
 
@@ -146,7 +152,8 @@ class DiameterVisual extends AnnotationHelper {
       labelType : this.labelType,
       arrowColor:this.textColor,
       linesColor:this.lineColor,
-      lineWidth:this.lineWidth
+      lineWidth:this.lineWidth,
+      highlightColor:this.highlightColor
       })
 
     this.leaderLine.hide()

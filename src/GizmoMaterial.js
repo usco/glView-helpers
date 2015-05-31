@@ -5,7 +5,7 @@ let GizmoMaterial = function ( parameters ) {
 		this.side = THREE.DoubleSide
 		this.setValues( parameters )
 		
-		this.highlightColor = parameters.highlightColor !== undefined ? options.parameters : 0xFFFF00
+		this.highlightColor = parameters.highlightColor !== undefined ? parameters.highlightColor : 0xFFFF00
 		this.oldColor = this.color.clone()
 		//this.oldOpacity = this.opacity
 
@@ -29,7 +29,7 @@ let GizmoLineMaterial = function ( parameters ) {
 		THREE.LineBasicMaterial.call( this )
 		this.setValues( parameters )
 		
-		this.highlightColor = parameters.highlightColor !== undefined ? options.parameters : "#ffd200"
+		this.highlightColor = parameters.highlightColor !== undefined ? parameters.highlightColor : "#ffd200"
 		this.linewidth = parameters.lineWidth || parameters.linewidth || 1
 
 		this.oldColor = this.color.clone()

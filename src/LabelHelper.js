@@ -213,27 +213,29 @@ class LabelHelper3d extends LabelHelper {
 class LabelHelperPlane extends LabelHelper {
   constructor( options ) {
     const DEFAULTS = {
-    };
-    let options = Object.assign({}, DEFAULTS, options); 
-    super( options );    
+      highlightColor:"#F00"
+    }
+    let options = Object.assign({}, DEFAULTS, options)
+    super( options )  
     
-    Object.assign(this, options);
-    this.generate();
+    Object.assign(this, options)
+    this.generate()
    }
    
   generate(){
-    var width  = this.width;
-    var height = this.height;
+    var width  = this.width
+    var height = this.height
     //console.log("width", width,"height", height);
 
     var material = new GizmoMaterial({
       map: this._texture,
       transparent: true,
       color: this.color,
+      highlightColor:this.highlightColor,
       alphaTest: this.alphaTest,
       side : THREE.FrontSide,
       shading: THREE.FlatShading,
-    });
+    })
     
      /*depthTest:false,
       depthWrite:false,

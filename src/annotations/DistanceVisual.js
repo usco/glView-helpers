@@ -1,11 +1,11 @@
 import THREE from 'three'
-import AnnotationHelper from "./AnnotationHelper"
+import AnnotationVisual from "./AnnotationVisual"
 import SizeHelper from "../dimensions/SizeHelper"
 import CrossHelper from "../CrossHelper"
 
 import {getTargetBoundsData} from "./utils"
 
-class DistanceVisual extends AnnotationHelper {
+class DistanceVisual extends AnnotationVisual {
   constructor( options ) {
   
     const DEFAULTS = {
@@ -142,7 +142,7 @@ class DistanceVisual extends AnnotationHelper {
 
 
 
-class DistanceVisual__ extends AnnotationHelper {
+class DistanceVisual__ extends AnnotationVisual {
   constructor( options ) {
   
     const DEFAULTS = {

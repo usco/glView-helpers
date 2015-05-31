@@ -1,12 +1,12 @@
 import THREE from 'three'
-import AnnotationHelper from "./AnnotationHelper"
+import AnnotationVisual from "./AnnotationVisual"
 import CrossHelper from "../CrossHelper"
 import SizeHelper from "../dimensions/SizeHelper"
 import BaseHelper from "../BaseHelper"
 
-import {getEntryExitThickness} from './utils'
+import {getEntryExitThickness, getTargetBoundsData} from './utils'
 
-class ThicknessVisual extends AnnotationHelper {
+class ThicknessVisual extends AnnotationVisual {
   constructor( options ) {
     const DEFAULTS = {
         normalType:  "face",//can be, face, x,y,z
@@ -31,18 +31,19 @@ class ThicknessVisual extends AnnotationHelper {
   }
   
   _computeBasics(){
-    var entryPoint = this.entryPoint
-    var exitPoint = this.exitPoint
-    var object    = this.object
+    let entryPoint = this.entryPoint
+    let exitPoint = this.exitPoint
+    let object    = this.object
     
     if( ! entryPoint || ! exitPoint || ! object ) return
     
-    var endToStart = exitPoint.clone().sub( entryPoint )
+    let endToStart = exitPoint.clone().sub( entryPoint )
     this.thickness = endToStart.length()
     
+    let putSide = new THREE.Vector3()
     try{
-      var midPoint = endToStart.divideScalar( 2 ).add( entryPoint )
-      var putSide = this.getTargetBoundsData(object, midPoint)
+      let midPoint = endToStart.divideScalar( 2 ).add( entryPoint )
+      putSide = getTargetBoundsData(object, midPoint)
     }catch(error){
       console.error(error)
     }
@@ -120,13 +121,13 @@ class ThicknessVisual extends AnnotationHelper {
 
     this.position.setFromMatrixPosition( object.matrixWorld )
     
-    //set various internal attributes
+    //set letious internal attributes
     this.setEntryPoint( entryPoint, object)
     this.exitPoint = exitPoint
     try{
-      var midPoint = endToStart.divideScalar( 2 ).add( entryPoint )
+      let midPoint = endToStart.divideScalar( 2 ).add( entryPoint )
       console.log("midPoint",entryPoint, midPoint, exitPoint)
-      var putSide = this.getTargetBoundsData(object, midPoint)
+      let putSide = this.getTargetBoundsData(object, midPoint)
     
     }catch(error){
       console.error(error)
