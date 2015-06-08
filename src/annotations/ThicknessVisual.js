@@ -67,7 +67,9 @@ class ThicknessVisual extends AnnotationVisual {
       labelType:"flat",
       arrowsPlacement:"outside",
       arrowColor: this.arrowColor,
-      sideLength:this.sideLength
+      sideLength:this.sideLength,
+
+      highlightColor:this.highlightColor
     })
     this.ThicknessVisualArrows.hide()
     this.add( this.ThicknessVisualArrows )
