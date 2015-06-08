@@ -18,6 +18,7 @@ class SizeHelper extends BaseHelper {
       _position:new THREE.Vector3(),
       centerColor:"#F00",
       crossColor:"#F00",
+      highlightColor:"F00",
       
       drawArrows: true,
       drawLeftArrow: true,
@@ -302,8 +303,15 @@ class SizeHelper extends BaseHelper {
   
   _setupVisuals(){
     //materials
-    this.arrowLineMaterial = new GizmoLineMaterial({color:this.arrowColor, linewidth:this.lineWidth, linecap:"miter"})
-    this.arrowConeMaterial = new GizmoMaterial({color:this.arrowColor})
+    this.arrowLineMaterial = new GizmoLineMaterial({
+      highlightColor:this.highlightColor,
+      color:this.arrowColor, 
+      linewidth:this.lineWidth, 
+      linecap:"miter"})
+    this.arrowConeMaterial = new GizmoMaterial({
+      color:this.arrowColor,
+      highlightColor:this.highlightColor
+    })
     
     //arrows
     let sideLength = this.sideLength
@@ -359,8 +367,16 @@ class SizeHelper extends BaseHelper {
     //this.dirDebugArrow.depthWrite  = this.dirDebugArrow.depthTest = false
     
     ////////sidelines
-    this.leftSideLine  = new LineHelper( {color:this.arrowColor} ) 
-    this.rightSideLine = new LineHelper( {color:this.arrowColor} )
+    this.leftSideLine  = new LineHelper( {
+      lineWidth:this.lineWidth/1.5,
+      color:this.arrowColor,
+      highlightColor:this.highlightColor
+    } ) 
+    this.rightSideLine = new LineHelper( {
+      lineWidth:this.lineWidth/1.5,
+      color:this.arrowColor,
+      highlightColor:this.highlightColor
+    } )
     
     this.add( this.rightSideLine )
     this.add( this.leftSideLine )
@@ -377,7 +393,9 @@ class SizeHelper extends BaseHelper {
           fontStyle: this.fontStyle,
           color:this.textColor, 
           background:(this.textBgColor!=null),
-          bgColor:this.textBgColor})
+          bgColor:this.textBgColor,
+          highlightColor:this.highlightColor
+        })
       break
       case "frontFacing":
         this.label = new LabelHelper3d({
@@ -387,7 +405,9 @@ class SizeHelper extends BaseHelper {
           fontWeight: this.fontWeight,
           fontStyle: this.fontStyle,
           color:this.textColor, 
-          bgColor:this.textBgColor})
+          bgColor:this.textBgColor,
+          highlightColor:this.highlightColor
+        })
       break
     }
     this.label.position.copy( this.labelPosition )
@@ -421,7 +441,7 @@ class SizeHelper extends BaseHelper {
     this.debugHelpers.add( this.offsetMidDebugHelper )
     this.debugHelpers.add( this.offsetEndDebugHelper )
     
-    this.add( this.debugHelpers )
+    //this.add( this.debugHelpers )
     if( ! this.debug )
     {
       this.debugHelpers.hide()
