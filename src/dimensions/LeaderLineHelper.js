@@ -14,7 +14,7 @@ class LeaderLineHelper extends BaseHelper {
       distance: 30,
       color:"#000",
       text:"",
-
+      fontFace:"Jura"
     }
     
     let options = Object.assign({}, DEFAULTS, options) 
@@ -83,6 +83,7 @@ class LeaderLineHelper extends BaseHelper {
         this.label = new LabelHelperPlane({
           text:this.text,
           fontSize:this.fontSize,
+          fontFace:this.fontFace,
           background:(this.textBgColor!=null),
           color:this.textColor,
           bgColor:this.textBgColor,
@@ -93,6 +94,7 @@ class LeaderLineHelper extends BaseHelper {
         this.label = new LabelHelper3d({
           text:this.text,
           fontSize:this.fontSize,
+          fontFace:this.fontFace,
           color:this.textColor, 
           bgColor:this.textBgColor})
       break
@@ -116,8 +118,10 @@ class LeaderLineHelper extends BaseHelper {
     this.precisionLabel.position.copy( precisionLabelPos )*/
    
    
-    let crossHelper = new CrossHelper({size:3})
-    this.add( crossHelper )
+    /*let crossHelper = new CrossHelper({
+        size:3
+    })
+    this.add( crossHelper )*/
     
     if(textBorder)
     {
