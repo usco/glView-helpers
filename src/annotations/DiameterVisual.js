@@ -100,7 +100,7 @@ class DiameterVisual extends AnnotationVisual {
     //initialise internal sub objects
     this.centerCross = new CrossHelper({
       size:this.centerCrossSize,
-      color:this.centerColor,
+      color:this.crossColor,
       highlightColor:this.highlightColor})
     this.centerCross.hide()
     this.add( this.centerCross )
@@ -146,7 +146,8 @@ class DiameterVisual extends AnnotationVisual {
     this.leaderLine = new LeaderLineHelper({
       text:text,
       radius:this.diameter/2,
-      fontSize:this.fontSize, 
+      fontSize:this.fontSize,
+      fontFace:this.fontFace, 
       textColor: this.textColor, 
       textBgColor:this.textBgColor,
       labelType : this.labelType,
