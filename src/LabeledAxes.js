@@ -1,6 +1,7 @@
 import THREE from 'three';
 import ArrowHelper from './ArrowHelper'
-      
+import {LabelHelperPlane, LabelHelper3d} from "./LabelHelper"
+
 class LabeledAxes extends THREE.Object3D{
 
   constructor( options ){
@@ -17,35 +18,47 @@ class LabeledAxes extends THREE.Object3D{
 
     var options =  options || {};
     this.size   = options.size !== undefined ? options.size : 50 ;
-    this.xColor = options.xColor!== undefined ? options.xColor : "0xFF7700" ;
-    this.yColor = options.yColor!== undefined ? options.yColor : "0x77FF00" ;
-    this.zColor = options.zColor!== undefined ? options.zColor : "0x0077FF" ;
+    this.xColor = options.xColor!== undefined ? options.xColor : "#FF7700" ;
+    this.yColor = options.yColor!== undefined ? options.yColor : "#77FF00" ;
+    this.zColor = options.zColor!== undefined ? options.zColor : "#0077FF" ;
 
-    this.fontSize   = options.fontSize!== undefined ? options.fontSize : 6;
-    this.textColor  = options.textColor!== undefined ? options.textColor : "#000";
+    this.fontSize   = options.fontSize!== undefined ? options.fontSize : 8
+    this.textColor  = options.textColor!== undefined ? options.textColor : "#000"
+    this.fontFace  = options.fontFace !== undefined ? options.fontFace : "Jura"
+    this.arrowSize = options.arrowSize !== undefined ? options.arrowSize : 3
 
-    this.arrowSize = options.arrowSize !== undefined ? options.arrowSize : 3;
-
-    var addLabels  = options.addLabels !== undefined ? options.addLabels : true;
+    var addLabels  = options.addLabels !== undefined ? options.addLabels : true
     var addArrows  = options.addArrows !== undefined ? options.addArrows : true;
 
-    this.xColor = new THREE.Color().setHex( this.xColor );
-    this.yColor = new THREE.Color().setHex( this.yColor );
-    this.zColor = new THREE.Color().setHex( this.zColor );
+    this.xColor = new THREE.Color( this.xColor )
+    this.yColor = new THREE.Color( this.yColor )
+    this.zColor = new THREE.Color( this.zColor )
+
 
     if ( addLabels == true )
     {
       var s = this.size ;
       var fontSize = this.fontSize ;
       
-      this.xLabel=this._drawText("X",fontSize);
-      this.xLabel.position.set(s,0,0);
+      let textOptions = {
+        fontSize:this.fontSize,
+        fontFace:this.fontFace,
+        //fontWeight: this.fontWeight,
+        //fontStyle: this.fontStyle,
+        color:this.textColor, 
+        bgColor:this.textBgColor,
+        highlightColor:this.highlightColor
+      }
+
+      this.xLabel=//this._drawText("X",fontSize);
+      new LabelHelper3d(Object.assign({text:"X"},textOptions))
+      this.xLabel.position.set(s,0,0)
       
-      this.yLabel=this._drawText("Y",fontSize);
-      this.yLabel.position.set(0,s,0);
+      this.yLabel=new LabelHelper3d(Object.assign({text:"Y"},textOptions))
+      this.yLabel.position.set(0,s,0)
       
-      this.zLabel=this._drawText("Z",fontSize);
-      this.zLabel.position.set(0,0,s);
+      this.zLabel=new LabelHelper3d(Object.assign({text:"Z"},textOptions))
+      this.zLabel.position.set(0,0,s)
     }  
     if ( addArrows == true )
     {

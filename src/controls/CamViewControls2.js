@@ -355,7 +355,7 @@ class CamViewControls extends THREE.Object3D{
   constructor( options, controlledCameras) { 
 	 super();
 	
-	 var options = options || {};
+	 var options = options || {}
   
    this.planesColor  = options.planesColor !== undefined ? options.planesColor : 0x00FF00;
    this.edgesColor   = options.edgesColor !== undefined ? options.edgesColor : 0xFF0000;

@@ -3,6 +3,7 @@ import THREE from 'three'
 let GizmoMaterial = function ( parameters ) {
 		THREE.MeshBasicMaterial.call( this )
 		this.side = THREE.DoubleSide
+		if("lineWidth" in parameters) delete parameters.lineWidth
 		this.setValues( parameters )
 		
 		this.highlightColor = parameters.highlightColor !== undefined ? parameters.highlightColor : 0xFFFF00
@@ -27,10 +28,16 @@ GizmoMaterial.prototype = Object.create( THREE.MeshBasicMaterial.prototype )
 
 let GizmoLineMaterial = function ( parameters ) {
 		THREE.LineBasicMaterial.call( this )
-		this.setValues( parameters )
+		
 		
 		this.highlightColor = parameters.highlightColor !== undefined ? parameters.highlightColor : "#ffd200"
 		this.linewidth = parameters.lineWidth || parameters.linewidth || 1
+
+		if("lineWidth" in parameters) delete parameters.lineWidth
+		if("highlightColor" in parameters) delete parameters.highlightColor
+		
+		this.setValues( parameters )
+
 
 		this.oldColor = this.color.clone()
 
