@@ -1,6 +1,7 @@
 import THREE from 'three'
 import BaseHelper from '../BaseHelper'
 import CrossHelper from "../CrossHelper"
+import ArrowHelper from "../ArrowHelper2"
 
 import {LabelHelperPlane, LabelHelper3d} from "../LabelHelper"
 import {GizmoMaterial,GizmoLineMaterial} from "../GizmoMaterial"
@@ -24,6 +25,7 @@ class LeaderLineHelper extends BaseHelper {
     this.arrowColor = options.arrowColor !== undefined ? options.arrowColor : 0x000000
     this.arrowHeadSize = options.arrowHeadSize !== undefined ? options.arrowHeadSize : 2.0
     this.arrowHeadWidth = options.arrowHeadWidth !== undefined ? options.arrowHeadWidth : 0.8
+    this.arrowHeadType  = options.arrowHeadType !== undefined ? options.arrowHeadType: undefined
     
     this.linesColor = options.linesColor !== undefined ? options.linesColor : 0x000000
     this.lineWidth  = options.lineWidth !== undefined ? options.lineWidth : 1
@@ -64,7 +66,8 @@ class LeaderLineHelper extends BaseHelper {
     angleEndPoint.x = -angleEndPoint.x
     angleEndPoint.y = -angleEndPoint.y
     
-    this.angleArrow = new THREE.ArrowHelper(angleArrowDir, angleEndPoint, angleLength, this.color,this.arrowHeadSize,this.arrowHeadWidth)
+    this.angleArrow = new ArrowHelper(angleArrowDir, angleEndPoint, angleLength, 
+      this.color,this.arrowHeadSize,this.arrowHeadWidth,this.arrowHeadType)
     this.angleArrow.scale.z =0.6
     
     let horizEndPoint = angleEndPoint.clone()
@@ -125,13 +128,34 @@ class LeaderLineHelper extends BaseHelper {
     
     if(textBorder)
     {
-      if(textBorder == "circle")
+      if(textBorder === "circle")
       {
-        let textBorderGeom = new THREE.CircleGeometry( labelSize, 30 )
+        let textBorderGeom = new THREE.CircleGeometry( labelSize, 32 )
         textBorderGeom.vertices.shift()
         let textBorderOutline = new THREE.Line( textBorderGeom, material ) 
         textBorderOutline.position.add( labelPosition )
         this.add( textBorderOutline )
+      }
+      if(textBorder === "rectangle"){
+        let rectWidth  = this.label.textHeight
+        let rectLength = this.label.textWidth
+
+        //console.log("textWidth",this.label.textWidth, this.label.width,"textHeight",this.label.textHeight, this.label.height)
+
+        let rectShape = new THREE.Shape()
+        rectShape.moveTo( 0,0 )
+        rectShape.lineTo( 0, rectWidth )
+        rectShape.lineTo( rectLength, rectWidth )
+        rectShape.lineTo( rectLength, 0 )
+        rectShape.lineTo( 0, 0 )
+        rectShape.lineTo( 0, 0 )
+
+        let textBorderGeom = new THREE.ShapeGeometry( rectShape )
+        let textBorderOutline = new THREE.Line( textBorderGeom, material ) 
+        textBorderOutline.position.add( labelPosition )
+        textBorderOutline.position.add( new THREE.Vector3(-rectLength/2,-rectWidth/2,0) )
+        this.add( textBorderOutline )
+
       }
     }
    
@@ -153,7 +177,7 @@ class LeaderLineHelper extends BaseHelper {
     })
     
     this.angleArrow.line.material = this.arrowLineMaterial
-    this.angleArrow.cone.material =  this.arrowConeMaterial
+    this.angleArrow.head.material =  this.arrowConeMaterial
     this.angleArrow.line.material.depthTest = this.angleArrow.line.material.depthTest = true
     this.angleArrow.line.material.depthWrite = this.angleArrow.line.material.depthWrite = true
     
