@@ -100,9 +100,11 @@ class LabelHelper extends BaseHelper {
     charWidth = (context.measureText(  Array(100+1).join('M') ).width ) / 100
     charHeight = this.fontSize 
 
-    let  rWidth  = charWidth * (this.text.length-1)
+    let  rWidth  = charWidth * (this.text.length)
     let  rHeight = charHeight
     let  textWidth = context.measureText(text).width
+
+    textWidth = rWidth
     let  sqrWidth  = getPowerOfTwo(textWidth)
     let  sqrHeight = getPowerOfTwo(2*this.fontSize)
     
