@@ -10,11 +10,11 @@ class CircleHelper extends BaseHelper{
   {      
 
     let defaultMaterial = new GizmoLineMaterial( { 
-      color: this.color, 
+      color: "#000", 
       depthTest:false, 
       depthWrite:false,
       renderDepth : 1e20,
-      highlightColor:this.highlightColor
+      highlightColor:"#F00"
     })
 
     const DEFAULTS ={
@@ -27,7 +27,7 @@ class CircleHelper extends BaseHelper{
       material: defaultMaterial
     }
 
-    let options = Object.assign({}, DEFAULTS, options)  
+    options = Object.assign({}, DEFAULTS, options)  
     super( options )    
     Object.assign(this, options)
         

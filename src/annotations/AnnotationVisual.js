@@ -39,7 +39,7 @@ class AnnotationVisual extends BaseHelper {
     //TODO: how to deal with lineWidth would require not using simple lines but strips
     //see ANGLE issue on windows platforms
     
-    let options = Object.assign({}, DEFAULTS, options)
+    options = Object.assign({}, DEFAULTS, options)
     
     super( options )  
     

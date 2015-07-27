@@ -31,7 +31,7 @@ class DiameterVisual extends AnnotationVisual {
       tolerance:0,//FIXME: this needs to be in all of the numerical measurement or not ? 
     }
     
-    let options = Object.assign({}, DEFAULTS, options) 
+    options = Object.assign({}, DEFAULTS, options) 
     super(options)
     
     this.text   = options.text !== undefined ? options.text : this.diameter.toFixed(2)

@@ -21,7 +21,7 @@ class LabelHelper extends BaseHelper {
       baseRatio:4, //convertion of canvas to webglUnits 
     }
     
-    let options = Object.assign({}, DEFAULTS, options) 
+    options = Object.assign({}, DEFAULTS, options) 
     
     super( options ) 
     
@@ -58,7 +58,7 @@ class LabelHelper extends BaseHelper {
   }
   
   applyFontStyleToContext( measureMode ){
-    let  measureMode = measureMode!== undefined ? measureMode : true
+    measureMode = measureMode!== undefined ? measureMode : true
     
     let  fontSize = this.charHeight
     if(!measureMode) fontSize = this.scaledFontSize
@@ -85,7 +85,7 @@ class LabelHelper extends BaseHelper {
     this.applyFontStyleToContext()
     
     function getPowerOfTwo(value, pow) {
-	    let  pow = pow || 1
+	    pow = pow || 1
 	    while(pow<value) {
 		    pow *= 2
 	    }
@@ -176,7 +176,7 @@ class LabelHelper3d extends LabelHelper {
     const DEFAULTS = {
     }
 
-    let options = Object.assign({}, DEFAULTS, options) 
+    options = Object.assign({}, DEFAULTS, options) 
     super( options )    
     Object.assign(this, options)
     
@@ -217,7 +217,7 @@ class LabelHelperPlane extends LabelHelper {
     const DEFAULTS = {
       highlightColor:"#F00"
     }
-    let options = Object.assign({}, DEFAULTS, options)
+    options = Object.assign({}, DEFAULTS, options)
     super( options )  
     
     Object.assign(this, options)

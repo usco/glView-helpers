@@ -15,7 +15,7 @@ class CrossHelper extends BaseHelper{
       internalDiameter:0 //??huh 
     }
 
-    let options = Object.assign({}, DEFAULTS, options) 
+    options = Object.assign({}, DEFAULTS, options) 
     super(options)
     Object.assign(this, options)
  

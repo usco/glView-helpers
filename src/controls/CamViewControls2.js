@@ -20,7 +20,7 @@ class CubeEdge extends THREE.Mesh{
     var width = width || 4;
     var position = position || new THREE.Vector3();
     var color = color || 0xFF0000;
-    this.selectionCallback = selectionCallback;
+    
 
     var midSize = size - width*2;
     var planeGeometry = new THREE.PlaneGeometry( midSize, width, 2, 2 );
@@ -43,6 +43,8 @@ class CubeEdge extends THREE.Mesh{
 	    } );
     //depthTest:false, depthWrite:false 
     super(geometry, material);
+
+    this.selectionCallback = selectionCallback;
     this.position.copy( position );
   }
 
@@ -59,7 +61,7 @@ class CubePlane extends THREE.Mesh{
   var size = size || 10;
   var position = position || new THREE.Vector3();
   var color = color || 0xFF0000;
-  this.selectionCallback = selectionCallback;
+  
 
   var geometry = new THREE.PlaneBufferGeometry( size, size, 2, 2 );
   var material = new GizmoMaterial( { color:color,
@@ -67,6 +69,7 @@ class CubePlane extends THREE.Mesh{
   
   super(geometry, material);
   this.position.copy( position );
+  this.selectionCallback = selectionCallback;
   }
 
   onSelect(){
@@ -83,13 +86,14 @@ class CubeCorner extends THREE.Mesh{
     var size = size || 10;
     var position = position || new THREE.Vector3();
     var color = color || 0xFF0000;
-    this.selectionCallback = selectionCallback;
+    
 
     var geometry = new THREE.BoxGeometry( size, size, size);
     var material = new GizmoMaterial( { color:color,
      });
     
     super( geometry, material );
+    this.selectionCallback = selectionCallback;
     this.position.copy( position );
   } 
 

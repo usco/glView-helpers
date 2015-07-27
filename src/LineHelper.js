@@ -16,11 +16,11 @@ class LineHelper extends BaseHelper {
       color:"#000",
     }
     
-    let options = Object.assign({}, DEFAULTS, options) 
-    
-    Object.assign(this, options)
+    options = Object.assign({}, DEFAULTS, options) 
     
     super( options )
+
+    Object.assign(this, options)
     
     console.log("LINE",this.lineWidth)
     this.material = new GizmoLineMaterial( { 

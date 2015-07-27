@@ -16,7 +16,7 @@ class NoteVisual extends AnnotationVisual {
       text:"A"
     }
     
-    let options = Object.assign({}, DEFAULTS, options) 
+    options = Object.assign({}, DEFAULTS, options) 
     super(options)
 
     //initialise internal sub objects

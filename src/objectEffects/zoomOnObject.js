@@ -18,6 +18,7 @@ ZoomInOnObject.prototype = {
 };
 
 ZoomInOnObject.prototype.execute = function( object , options){
+  console.log("ZoomInOnObject",object,options)
   if(!object) return;
   //var scope = this;//TODO: this is temporary, until this "effect" is an object
   var options = options || {};
@@ -36,7 +37,7 @@ ZoomInOnObject.prototype.execute = function( object , options){
   
   var camera = this.camera;
   var camPos = camera.position.clone();
-  var camTgt = camera.target.clone();
+  var camTgt = ( camera.target || new THREE.Vector3() ) .clone();
   var camTgtTarget =position.clone();
   
   var camPosTarget = camera.position.clone().sub( position ) ;

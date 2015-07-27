@@ -19,7 +19,7 @@ class DistanceVisual extends AnnotationVisual {
       endObject: undefined
     }
     
-    let options = Object.assign({}, DEFAULTS, options) 
+    options = Object.assign({}, DEFAULTS, options) 
     
     super( options )    
     Object.assign(this, options)
@@ -105,7 +105,7 @@ class DistanceVisual extends AnnotationVisual {
     if(!start) return
     this.start = start
     if( object) this.startObject = object
-    let object = this.startObject
+    object = this.startObject
     //console.log("setting start",start, object, object.worldToLocal(start.clone()) )
     
     this.startCross.position.copy( this.start )
@@ -117,8 +117,7 @@ class DistanceVisual extends AnnotationVisual {
     if(!end) return
     this.end = end
     if( object) this.endObject = object
-    
-    let object = this.endObject
+    object = this.endObject
      
     this.distance = end.clone().sub(this.start).length()
 
@@ -156,7 +155,7 @@ class DistanceVisual__ extends AnnotationVisual {
       endObject: undefined
     }
     
-    let options = Object.assign({}, DEFAULTS, options) 
+    options = Object.assign({}, DEFAULTS, options) 
     
     super( options )    
     Object.assign(this, options)
@@ -307,7 +306,7 @@ class DistanceVisual__ extends AnnotationVisual {
     if(!start) return
     this.start = start
     if( object) this.startObject = object
-    let object = this.startObject
+    object = this.startObject
     //console.log("setting start",start, object, object.worldToLocal(start.clone()) )
     
     //FIXME: experimental
@@ -330,7 +329,7 @@ class DistanceVisual__ extends AnnotationVisual {
     this.end = end
     if( object) this.endObject = object
     
-    let object = this.endObject
+    object = this.endObject
     
     //FIXME: experimental
     this.curEndObjectPos = object.position.clone()

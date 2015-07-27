@@ -18,11 +18,11 @@ class ThicknessVisual extends AnnotationVisual {
         thickness: undefined,
     }
     
-    this.DEFAULTS = DEFAULTS
-    let options = Object.assign({}, DEFAULTS, options) 
+    options = Object.assign({}, DEFAULTS, options) 
     super(options)
     Object.assign(this, options)//unsure
     
+    this.DEFAULTS = DEFAULTS
     //initialise visuals
     this._setupVisuals()
     this._computeBasics()

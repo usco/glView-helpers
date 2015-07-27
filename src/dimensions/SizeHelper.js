@@ -60,9 +60,9 @@ class SizeHelper extends BaseHelper {
       length : 0,
     }
   
-  this.DEFAULTS = DEFAULTS //keep defaults
-  let options = Object.assign({}, DEFAULTS, options) 
+  options = Object.assign({}, DEFAULTS, options) 
   super(options)
+  this.DEFAULTS = DEFAULTS //keep defaults
 
   Object.assign(this, options)
 

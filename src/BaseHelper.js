@@ -10,7 +10,7 @@ class BaseHelper extends THREE.Object3D {
       name : "",
       debug:false
     }
-    let options = Object.assign({}, DEFAULTS, options); 
+    options = Object.assign({}, DEFAULTS, options); 
     super(options);
     
     Object.assign(this, options);

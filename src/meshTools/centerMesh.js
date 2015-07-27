@@ -4,9 +4,9 @@ import {computeBoundingSphere} from './computeBounds'
 let centerMesh=function( object, onX, onY, onZ )
 {
   //TODO: should this be added to our object/mesh classes
-  let onX = onX === undefined ? false: onX
-  let onY = onY === undefined ? false: onY
-  let onZ = onZ === undefined ? false: onZ
+  onX = onX === undefined ? false: onX
+  onY = onY === undefined ? false: onY
+  onZ = onZ === undefined ? false: onZ
   
   //centering hack
   if(!object.boundingSphere) computeBoundingSphere( object )

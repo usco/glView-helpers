@@ -18,7 +18,7 @@ class LeaderLineHelper extends BaseHelper {
       fontFace:"Jura"
     }
     
-    let options = Object.assign({}, DEFAULTS, options) 
+    options = Object.assign({}, DEFAULTS, options) 
     super(options)
     Object.assign(this, options)
   
