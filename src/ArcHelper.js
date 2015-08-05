@@ -1,7 +1,11 @@
+import THREE from 'three'
+import BaseHelper from "./BaseHelper"
+import {GizmoMaterial,GizmoLineMaterial} from "./GizmoMaterial"
+
 /*
 //TODO: make this into a mesh / geometry subclass
 */
-ArcHelper = function(options)
+let ArcHelper = function(options)
 {
   BaseHelper.call( this );
   
@@ -168,6 +172,6 @@ ArcHelper.prototype.setInnerRadius = function( innerRadius ){
   this._generate();
 }
 
-
+export default ArcHelper
 
  

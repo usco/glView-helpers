@@ -219,6 +219,7 @@ class SizeHelper extends BaseHelper {
     
     innerLength = labelLength + arrowHeadsLength
     innerLengthHalf = innerLength / 2
+
     
     /*cases
       - no label : just arrows: 
@@ -280,9 +281,10 @@ class SizeHelper extends BaseHelper {
         labelPos = "top"
       }
     }else{
-       this.arrowSize -= labelHoleHalfSize
-       this.leftArrowPos.add( this.leftArrowDir.clone().normalize().setLength( labelHoleHalfSize ) )
-       this.rightArrowPos.add( this.rightArrowDir.clone().normalize().setLength( labelHoleHalfSize ) )
+      let labelHoleHalfSize = labelLength/2
+      this.arrowSize -= labelHoleHalfSize
+      this.leftArrowPos.add( this.leftArrowDir.clone().normalize().setLength( labelHoleHalfSize ) )
+      this.rightArrowPos.add( this.rightArrowDir.clone().normalize().setLength( labelHoleHalfSize ) )
     }
     
     //offset the label based on centered/top/bottom setting
