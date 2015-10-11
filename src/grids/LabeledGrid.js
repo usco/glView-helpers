@@ -135,9 +135,9 @@ class LabeledGrid extends THREE.Object3D{
         }
       }
       
-      this.mainGrid = new THREE.Line(gridGeometry, gridMaterial, THREE.LinePieces);
+      this.mainGrid = new THREE.LineSegments(gridGeometry, gridMaterial);
       //create sub grid geometry object
-      this.subGrid = new THREE.Line(subGridGeometry, subGridMaterial, THREE.LinePieces);
+      this.subGrid = new THREE.LineSegments(subGridGeometry, subGridMaterial);
 
       //create margin
       var offsetWidth  = width + this.marginSize;
@@ -176,7 +176,7 @@ class LabeledGrid extends THREE.Object3D{
         linewidth: 2,
         transparent: true
       });
-      this.margin = new THREE.Line(marginGeometry, strongGridMaterial, THREE.LinePieces);
+      this.margin = new THREE.LineSegments(marginGeometry, strongGridMaterial);
       
       //add all grids, subgrids, margins etc
       this.add( this.mainGrid );
