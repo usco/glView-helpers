@@ -5,30 +5,21 @@ import THREE from 'three';
  - use label helper
 */
 
-class LabeledGrid extends THREE.Object3D{
-  constructor( width, length, step , upVector, color, opacity, text, textColor, textPosition) {
-      const DEFAULTS = {
-        width: 200,
-        length:200,
-        step: 100,
-        color: 0xFFFFFF,
-        opacity: 0.1,
-        addText: true,
-        textColor: "#FFFFFF",
-        textLocation: "f",
-        rootAssembly: null
-      };
-      super( );
+export class LabeledGrid extends THREE.Object3D{
+  constructor( width = 200, length = 200, step = 100, upVector = [0,1,0],
+               color = 0x00baff, opacity = 0.2,
+               text = true, textColor = "#000000", textLocation = "center") {
+      super();
       
-      this.width        = width || 200;
-      this.length       = length || 200;
-      this.step         = step || 100;
-      this.color        = color ||  0x00baff;
-      this.opacity      = opacity || 0.2;
-      this.text         = text || true;
-      this.textColor    = textColor || "#000000";
-      this.textPosition = "center";
-      this.upVector     = new THREE.Vector3().fromArray(upVector) || new THREE.Vector3(0,1,0);
+      this.width        = width;
+      this.length       = length;
+      this.step         = step;
+      this.color        = color;
+      this.opacity      = opacity;
+      this.text         = text;
+      this.textColor    = textColor;
+      this.textLocation = textLocation;
+      this.upVector     = new THREE.Vector3().fromArray(upVector);
       
       this.name = "grid";
       
@@ -376,10 +367,6 @@ class LabeledGrid extends THREE.Object3D{
     
   }
 }
-
-
-//export { LabeledGrid };
-module.exports = LabeledGrid;
 
 //autoresize, disabled for now
 /*
