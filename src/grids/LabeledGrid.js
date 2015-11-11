@@ -5,7 +5,7 @@ import THREE from 'three';
  - use label helper
 */
 
-export class LabeledGrid extends THREE.Object3D{
+export default class LabeledGrid extends THREE.Object3D{
   constructor( width = 200, length = 200, step = 100, upVector = [0,1,0],
                color = 0x00baff, opacity = 0.2,
                text = true, textColor = "#000000", textLocation = "center") {
