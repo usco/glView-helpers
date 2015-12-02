@@ -3,11 +3,11 @@ import BaseHelper from "../BaseHelper"
 import Box3C      from "../Box3C"
 import SizeHelper from "./SizeHelper"
 
-let ObjectDimensionsHelper = function (options) {
+function ObjectDimensionsHelper (options) {
   BaseHelper.call( this );
-  let options = options || {};
+  options = options || {};
   let color = this.color = options.color || 0x000000;
-  let mesh = options.mesh || this.parent || null;
+  mesh = options.mesh || this.parent || null;
   
   this.textBgColor= options.textBgColor!== undefined ? options.textBgColor : "#fff";
   this.textColor  = options.textColor!== undefined ? options.textColor : "#000";
@@ -24,7 +24,7 @@ ObjectDimensionsHelper.prototype.constructor = ObjectDimensionsHelper;
 
 ObjectDimensionsHelper.prototype.attach = function(mesh){
   let color = this.color;
-  let mesh = this.mesh = mesh;
+  mesh = this.mesh = mesh;
   let lineMat = new THREE.MeshBasicMaterial({color: color, wireframe: true, shading:THREE.FlatShading});
   /*mesh.updateMatrixWorld();
   let matrixWorld = new THREE.Vector3();

@@ -1,7 +1,2 @@
 
-class ObjectEffect{
 
-}
-
-
-export ObjectEffect;

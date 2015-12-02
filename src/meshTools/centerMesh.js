@@ -1,7 +1,7 @@
 import THREE from "three"
 import {computeBoundingSphere} from './computeBounds'
 
-let centerMesh=function( object, onX, onY, onZ )
+export default function centerMesh( object, onX, onY, onZ )
 {
   //TODO: should this be added to our object/mesh classes
   onX = onX === undefined ? false: onX
@@ -39,5 +39,3 @@ let centerMesh=function( object, onX, onY, onZ )
   }
   return object
 }
-
-export default centerMesh 

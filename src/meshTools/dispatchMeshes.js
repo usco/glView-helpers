@@ -25,13 +25,13 @@ class AssemblyScene{
   
   //TODO: needs to include children etc
   //TODO: implement
-  _findFreePositionFor(obj){
+  /*_findFreePositionFor(obj){
 		var posList = [];
 		for a in this._meshes:
 			p = a.position.clone(); //
-			/*if self._oneAtATime:
-				s = (a.getSize()[0:2] + obj.getSize()[0:2]) / 2 + self._sizeOffsets + self._headSizeOffsets + numpy.array([4,4], numpy.float32)
-			else:*/
+			//if self._oneAtATime:
+			//	s = (a.getSize()[0:2] + obj.getSize()[0:2]) / 2 + self._sizeOffsets + self._headSizeOffsets + numpy.array([4,4], numpy.float32)
+			//else:
 		  s = (a.getSize()[0:2] + obj.getSize()[0:2]) / 2 + numpy.array([4,4], numpy.float32)
 			posList.push( p.add( s ).multiply( new THREE.Vector3( 1.0, 1.0, 0.0 ) ) );
 			posList.push(p.add( s ).multiply( new THREE.Vector3( 0.0, 1.0, 0.0 ) ) );
@@ -70,7 +70,7 @@ class AssemblyScene{
 		if( best !== null){
 			obj.position.copy(best);
 	  }
-  }
+  }*/
 }
 
 /*horribly basic hack*/
@@ -86,4 +86,4 @@ function dispatchMesh( mesh, meshes ){
 }
 
 
-export AssemblyScene
+//export AssemblyScene

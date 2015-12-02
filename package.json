@@ -1,8 +1,8 @@
 {
   "name": "glView-helpers",
   "version": "0.0.2",
-  "description": "glView-helpers ============================",
-  "main": "index.js",
+  "description": "glView-helpers ",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/usco/glView-helpers.git"
@@ -14,7 +14,14 @@
   },
   "homepage": "https://github.com/usco/glView-helpers",
   "devDependencies": {
-    "babel": "^5.4.3",
-    "babelify": "^5.0.3"
+    "babel-cli": "^6.2.0",
+    "babel-core": "^6.2.1",
+    "babel-preset-es2015": "^6.1.18",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1"
+  },
+  "scripts": {
+    "browserify": "browserify src/index.js -t babelify -t --standalone glView-helpers --exclude three --outfile lib/glView-helpers.js",
+    "build": "babel src --out-dir lib"
   }
 }

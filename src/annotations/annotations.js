@@ -1,4 +1,3 @@
-require("babel/polyfill");
 
 exports.AnnotationVisual = require("./AnnotationVisual.js" );
 exports.DistanceVisual   = require("./DistanceVisual.js" );

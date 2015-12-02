@@ -3,7 +3,7 @@ import TWEEN from 'tween.js'
 
 //var TWEEN = require('.tween.js');
 
-var ZoomInOnObject = function( options ) {
+export default function ZoomInOnObject( options ) {
   var options = options || {};
   this.camera = options.camera === undefined ? undefined: options.camera;
   
@@ -98,7 +98,3 @@ ZoomInOnObject.prototype.undo = function()
     .start();
 }
 
-export default ZoomInOnObject;
-
-
-//export ZoomInOnObject;
