@@ -13,7 +13,9 @@ import ThicknessVisual  from './annotations//ThicknessVisual.js'
 const annotations = {AnnotationVisual, DistanceVisual, NoteVisual, DiameterVisual, AngleVisual, ThicknessVisual}
 
 import ZoomInOnObject from './objectEffects/zoomInOnObject'
-const objectEffects = {ZoomInOnObject}
+import zoomToFit from './objectEffects/zoomToFit'
+
+const objectEffects = {ZoomInOnObject, zoomToFit}
 
 import centerMesh from './meshTools/centerMesh'
 const meshTools = {centerMesh}

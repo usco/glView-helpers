@@ -39,12 +39,6 @@ export function computeBoundingBox(object, force)
   return bbox
 }
 
-function computeBoundingSphere_old(object, force)
-{
-  object.boundingSphere = computeObject3DBoundingBox(object, force).getBoundingSphere();
-  return object.boundingSphere;
-}
-
 
 export function computeBoundingSphere(object, force)
 {

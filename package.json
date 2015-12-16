@@ -27,5 +27,8 @@
     "release-patch": "git checkout master && release patch",
     "release-minor": "git checkout master && release minor",
     "release-major": "git checkout master && release major"
+  },
+  "dependencies": {
+    "fast.js": "^0.1.1"
   }
 }
