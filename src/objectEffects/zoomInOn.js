@@ -3,7 +3,7 @@ import TWEEN from 'tween.js'
 import assign from 'fast.js/object/assign'//faster object.assign
 
 
-export default function zoomIn( object, camera, options ) {
+export default function zoomInOn( object, camera, options ) {
   
   const defaults = {
     position     : undefined//to force a given "point " vector

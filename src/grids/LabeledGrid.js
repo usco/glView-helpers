@@ -335,7 +335,12 @@ export default class LabeledGrid extends THREE.Object3D{
       size = 256;
     }
     
-    canvas = document.createElement('canvas');
+    if(document){
+      canvas = document.createElement('canvas');
+    }else{
+      canvas = {}
+    }
+    
     var size = 128;
     canvas.width = size;
     canvas.height = size;
