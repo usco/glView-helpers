@@ -2,11 +2,24 @@ import THREE from 'three';
 
 class ImagePlane extends THREE.Object3D{
   constructor (width, length, imgUrl, resolution, upVector) {
-    super();
+
+    /*const DEFAULTS = {
+        width:200
+        ,length:200
+        ,imgUrl:""
+        ,upVector:new THREE.Vector3(0,1,0)
+    }
+
+    options = Object.assign({}, DEFAULTS, options) 
+    super(options)
+    this.DEFAULTS = DEFAULTS //keep defaults
+
+    Object.assign(this, options)*/
+
     this.width = width || 200;
     this.length = length || 200;
     this.imgUrl = imgUrl || "";
-    this.upVector = upVector || new THREE.Vector3(0,1,0);
+    this.upVector = upVector || ;
 
     this.userData.unselectable = true; // this should never be selectable
     this._drawPlane();

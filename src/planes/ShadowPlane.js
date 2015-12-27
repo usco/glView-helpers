@@ -1,10 +1,10 @@
-import THREE from 'three';
+import THREE from 'three'
 
-class ShadowPlane extends THREE.Object3D{
+export default class ShadowPlane extends THREE.Object3D{
 
   constructor(width, length, shadowColor, upVector) {
     super();
-    this.width = width || 200;
+    this.width  = width || 200;
     this.length = length || 200;
     this.shadowColor = shadowColor || new THREE.Color(1,1,1);
     this.upVector = upVector || new THREE.Vector3(0,1,0);
@@ -76,7 +76,4 @@ class ShadowPlane extends THREE.Object3D{
     this.lookAt(upVector);
   }
 }
-
-//export { ShadowPlane };
-module.exports = ShadowPlane;
       
