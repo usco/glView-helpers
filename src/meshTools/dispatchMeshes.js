@@ -74,7 +74,7 @@ class AssemblyScene{
 }
 
 /*horribly basic hack*/
-function dispatchMesh( mesh, meshes ){
+export function dispatchMesh( mesh, meshes ){
   
   for(var i=0;i<meshes.length;i++)
   {
@@ -82,8 +82,4 @@ function dispatchMesh( mesh, meshes ){
     //TODO : move current mesh until there is no overlap
     
   }
-
 }
-
-
-//export AssemblyScene
