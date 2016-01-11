@@ -14,13 +14,13 @@ const annotations = {AnnotationVisual, DistanceVisual, NoteVisual, DiameterVisua
 
 //import ZoomInOnObject from './objectEffects/zoomInOnObject'
 
-import zoomInOn from './objectEffects/zoomInOn'
-import zoomToFit from './objectEffects/zoomToFit'
+import zoomInOn from './cameraEffects/zoomInOn'
+import zoomToFit from './cameraEffects/zoomToFit'
 
-const objectEffects = {zoomInOn, zoomToFit}
+const cameraEffects = {zoomInOn, zoomToFit}
 
 import centerMesh from './meshTools/centerMesh'
 const meshTools = {centerMesh}
 
-export {grids,planes,meshTools,CamViewControls, objectEffects, annotations}
+export {grids, planes, meshTools,CamViewControls, cameraEffects, annotations}
 
