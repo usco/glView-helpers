@@ -2,8 +2,8 @@ import THREE from "three"
 
 export default function resizeMesh( object, minSize, maxSize )
 {  
-  let minSize = minSize || 0.2
-  let maxSize = maxSize || 500
+  minSize = minSize || 0.2
+  maxSize = maxSize || 500
   //if(!object.boundingSphere) computeObject3DBoundingSphere( object );
   //FIXME: bsphere can be present but with a radius == infinity etc
   computeObject3DBoundingSphere( object )
