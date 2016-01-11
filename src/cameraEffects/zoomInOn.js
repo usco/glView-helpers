@@ -8,19 +8,16 @@ export default function zoomInOn( object, camera, options ) {
   const defaults = {
     position     : undefined//to force a given "point " vector
     ,orientation : undefined//to force a given "look at " vector
-    ,distance    : undefined
-    ,zoomTime    : undefined
+    ,distance    : 3 
+    ,zoomTime    : 400
     ,precision   : 0.001
   }
   
-
   if(!object) return
   if(!camera) return 
 
-  let {position,orientation,distance,zoomTime,precision} = assign({},defaults,options)
+  let {position,orientation,distance,zoomTime,precision} = assign({}, defaults, options)
   console.log("ZoomInOnObject", object,options)
-
-  //var scope = this;//TODO: this is temporary, until this "effect" is an object
 
   if(!position){
     distance = object.boundingSphere.radius*distance
@@ -52,6 +49,36 @@ export default function zoomInOn( object, camera, options ) {
     //already at target, do nothing
     return
   }   
+
+  //possible api change, to have function return data instead of mutating anything, making things more testable too
+  /*
+    //return a set of end /final points , both for the position...and target
+    return { pos:camTgt, tgt:camTgtTarget}
+  
+    }
+    return {
+    starts:[camPos,camTgt]//order matters
+    ,ends:[camTgt, camTgtTarget]
+    ,attrs:["position","target"]
+    ,easing:[TWEEN.Easing.Quadratic.In,TWEEN.Easing.Quadratic.In]
+    ,duration:zoomTime}
+
+  function animateCamera(camera, params){
+    params = params || {starts:[],duration:0}
+    const duration = params.duration
+
+    return params.starts.map(function(start, index){
+
+      return new TWEEN.Tween( start )
+        .to( camPosTarget , duration )
+        .easing( params.easing[index] || TWEEN.Easing.Quadratic.In )
+        .onUpdate( function () {
+          camera.position.copy(camPos);  
+        } )
+        .start()
+    })
+  }*/
+
   let tween = new TWEEN.Tween( camPos )
     .to( camPosTarget , zoomTime )
     .easing( TWEEN.Easing.Quadratic.In )

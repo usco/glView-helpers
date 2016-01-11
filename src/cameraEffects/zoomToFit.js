@@ -30,6 +30,15 @@ export default function zoomToFit ( object, camera, target ) {
   //offset camera position by offset distance + target 
   camera.position.addVectors(  vec , target )
   camera.updateProjectionMatrix()
+
+  //possible api change, to have function return data instead of mutating anything
+  /*vec.addVectors(vec, target)
+  
+  return {COG,offset:vec}
+
+  //in other function ??
+  pointCameraTo(COG, target, camera)
+  camera.lookAt(COG)*/
 }
 
 /**
@@ -45,5 +54,14 @@ export function pointCameraTo (COG, target, camera) {
   v.subVectors(COG,target)
 
   camera.position.addVectors(camera.position, v)
+}
+
+//non mutating
+export function positionOfCameraPointedTo (COG, target, camera) {
+  // Refocus camera to the center of the new object
+  let v = new THREE.Vector3()
+  v.subVectors(COG, target)
+
+  return camera.position.clone().addVectors(camera.position, v)
 }
 
