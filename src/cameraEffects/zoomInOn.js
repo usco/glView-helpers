@@ -17,7 +17,7 @@ export default function zoomInOn( object, camera, options ) {
   if(!camera) return 
 
   let {position,orientation,distance,zoomTime,precision} = assign({}, defaults, options)
-  console.log("ZoomInOnObject", object,options)
+  //console.log("ZoomInOnObject", object,options)
 
   if(!position){
     distance = object.boundingSphere.radius*distance
@@ -53,7 +53,7 @@ export default function zoomInOn( object, camera, options ) {
   //possible api change, to have function return data instead of mutating anything, making things more testable too
   /*
     //return a set of end /final points , both for the position...and target
-    return { pos:camTgt, tgt:camTgtTarget}
+    return { pos:camPosTarget, tgt:camTgtTarget}
   
     }
     return {
@@ -62,21 +62,6 @@ export default function zoomInOn( object, camera, options ) {
     ,attrs:["position","target"]
     ,easing:[TWEEN.Easing.Quadratic.In,TWEEN.Easing.Quadratic.In]
     ,duration:zoomTime}
-
-  function animateCamera(camera, params){
-    params = params || {starts:[],duration:0}
-    const duration = params.duration
-
-    return params.starts.map(function(start, index){
-
-      return new TWEEN.Tween( start )
-        .to( camPosTarget , duration )
-        .easing( params.easing[index] || TWEEN.Easing.Quadratic.In )
-        .onUpdate( function () {
-          camera.position.copy(camPos);  
-        } )
-        .start()
-    })
   }*/
 
   let tween = new TWEEN.Tween( camPos )
