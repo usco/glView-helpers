@@ -20,6 +20,9 @@ import zoomToFit from './cameraEffects/zoomToFit'
 const cameraEffects = {zoomInOn, zoomToFit}
 
 import centerMesh from './meshTools/centerMesh'
-const meshTools = {centerMesh}
+import resizeMesh from './meshTools/resizeMesh'
+import {computeBoundingBox, computeBoundingSphere} from './meshTools/computeBounds'
+
+const meshTools = {centerMesh, resizeMesh, computeBoundingBox, computeBoundingSphere}
 
 export { grids, planes, meshTools, CamViewControls, cameraEffects, annotations }
