@@ -1,5 +1,3 @@
-module.exports ={
-  resizeMesh: require('./meshTools/resizeMesh'),
-  centerMesh: require('./meshTools/centerMesh'),
-  computeBounds: require('./meshTools/computeBounds')
-}
+export {default as resizeMesh} from './meshTools/resizeMesh'
+export {default as centerMesh} from './meshTools/centerMesh'
+export {computeBoundingBox, computeBoundingSphere} from './meshTools/computeBounds'
