@@ -25,8 +25,8 @@
     "build": "babel src --out-dir lib",
     "release": "npm run release-patch",
     "release-patch": "git checkout master ; npm version patch && git push origin master --tags ",
-    "release-minor": "git checkout master ; npm version patch && git push origin master --tags ",
-    "release-major": "git checkout master ; npm version patch && git push origin master --tags "
+    "release-minor": "git checkout master ; npm version minor && git push origin master --tags ",
+    "release-major": "git checkout master ; npm version major && git push origin master --tags "
   },
   "dependencies": {
     "fast.js": "^0.1.1"
