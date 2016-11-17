@@ -1,6 +1,6 @@
 {
   "name": "glView-helpers",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "glView-helpers ",
   "main": "lib/index.js",
   "repository": {
